@@ -1,10 +1,14 @@
 机器学习不仅仅是一种简单的算法，还可以将其放在其他任何地方以获得奇妙的结果。机器学习是一个从定义数据开始，最终获得一定准确率的模型的过程。在本节中，我们将学习这个过程。
 
+---
+
 #### 1．问题定义
 
 机器学习的过程从定义一个商业问题开始。机器学习的需求是什么？这个任务真的需要高级的预测算法来解决吗？
 
 问题定义是非常重要的，它提供了更正式地思考解决方案的方向。它基本上处理两个问题。
+
+---
 
 **A．问题是什么？**
 
@@ -15,6 +19,7 @@
 - - **任务（T）：**根据图像中是否包含人对图像进行分类。
   - **经验（E）：**带有是否包含人的标签的图像。
   - **性能（P）：**错误率。在所有的分类图像中，错误预测的百分比是多少。错误率越低，准确率越高。
+---
 
 **B．为什么这个问题需要解决方案？**
 
@@ -26,11 +31,16 @@
 
 还需要定义可以使用此解决方案的场景。这是一个通用型的解决方案，还是为特定任务（ATM传感器中的检测人员）所设计的呢？解决方案的失效日期是什么时候（它是终身的还是在特定的期限内）？
 
+---
+
 #### 2．数据采集
 
 在定义问题之后，开始进行数据采集。收集数据有多种不同的方式，如果想把评论与评级联系起来，就要从抓取网站开始。为了分析Twitter数据并将其与情感联系起来，就要从Twitter提供的API入手，收集标签数据或者与某个公司相关联的数据。市场调查人员通过创建不同的调查表格，并将其放在网站上来收集数据。对于像Amazon、 Facebook这样拥有众多用户的公司，其数据是巨大的，而根据问题的不同，还需要收集数据和标签。假设要建立一个新闻分类器，将新闻划分为体育新闻、市场新闻和政治新闻。因此，收集到的每一条新闻都需要一个与之相关的标签，通过这些数据可以构造机器学习的分类器。
 
 正确的数据是解决机器学习问题的关键。即使是基本算法，高质量的数据也会产生令人满意的结果。
+
+---
+
 
 #### 3．数据准备
 
@@ -38,15 +48,29 @@
 
 数据准备是从数据选择开始的，并不是收集到的每个数据都对问题的解决有帮助。假设你正在分析服务器上的日志，在每个用户活动之后会生成许多与系统相关的信息，如果正在预测的是营销活动的市场反应，那么这个日志可能就不起作用了。所以，基于所要解决的问题，应将无关数据从之后的操作中删除。
 
+---
+
+
 在更高层次的基础上识别数据后，需要对数据进行转换或预处理，使之能更好地应用于机器学习算法。以下是数据预处理过程中的一些过程。
 
 - - **清理（Cleaning）：**数据可能含有需要移除的错误。假设数据中缺少某些属性的数值，由于目前并没有适合的算法能够处理值缺失问题，因此可以用一些值（数值的均值/中值和分类值的默认值）代替缺失值。如果数据包含敏感信息，如电子邮件的ID和用户的联系号码，则需要在与团队共享数据之前删除数据中的敏感信息。
+
+---
+
+
   - **格式化（Formatting）：**算法需要预定义格式的数据。基于Python机器学习库的要求，采用Python列表的形式表示数据。一些实时的机器学习库使用的是JSON格式的数据，而Excel文件使用CSV格式的数据。根据使用工具或技术的不同，需要对数据进行格式化，使其满足使用工具或技术对数据格式的要求。
   - **采样（Sampling）：**并非所有的数据都是有用的。一些在模型中存储数据的算法很难实时生成预测，可以从数据中删除类似的实例。如果是分类模型，可以按照标签进行等比例采样。
   - **分解（Decomposition）：**分解会使得一些特征更加有用。以数据库中的日期属性为例，可以把日期分解成日、月、年，还可以创建诸如周末或工作日、季度、闰年或日期等特征，使其在预测中更有用。
+
+---
+
+
   - **缩放（Scaling）：**不同的属性遵循不同的单位和值。假设通常以厘米为单位测量一个人的身高，而对于一些数据，可能是以英寸为单位。所以，需要先将其换算成厘米。另外，一个属性的高/低值可能会影响到其他属性。例如有3个特征，如人的年龄、体重和年收入，现在希望根据它们预测医疗保险计划。如果直接使用这些数据，模型将高度依赖于工资，因为工资的数值远远高于其他属性的值。所以，需要对每个属性的值进行缩放，调整为[0,1]或[-1,1 ]。
 
 这个过程也称为**特征处理（Feature Processing）**，它包括特征选择、预处理以及将其转换为对于机器学习算法有益处的格式。
+
+---
+
 
 #### 4．数据分割——训练数据和测试数据
 
@@ -54,29 +78,45 @@
 
 一般将60%～80%的数据作为训练数据，剩余的部分作为测试数据。所以，在测试数据中获得最好结果的模型可以作为目标模型。
 
+---
+
+
 #### 5．算法选择
 
 我们从一组机器学习算法开始，并将训练数据的特征应用到算法中，算法选择依赖于问题的定义。如果从电子邮件中收集数据，并将邮件分为垃圾邮件或非垃圾邮件，则这时所需要的算法是在输入变量后输出相应的结果（垃圾邮件或者非垃圾邮件），这类算法称为**分类（Classification）**算法（如决策树、朴素贝叶斯、神经网络等）。如果想预测某一任意连续变量（如预测即将到来的季度销售量），则使用**回归（Regression）**算法（如线性回归、核回归等）。如果所解决的问题并没有相关的任何输出或反应，则可以使用**聚类（Clustering）**算法，根据它们的特性对其分组。每种类别中都有大量的算法，我们将在后续的章节中给出示例。
+
+---
+
 
 #### 6．算法训练
 
 在选择算法之后，开始训练模型。训练模型是在训练数据集上进行的，大多数算法的权值/参数在训练开始时都是随机分配的，并在每次迭代中加以改进。算法训练过程中，在训练数据集上多次运行以产生结果，如图1.1所示。例如，在线性回归的情况下，算法在开始时随机放置分离线，在每次迭代之后不断地改进自身（也就是移动分离线）。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0101.jpg{75%}](https://www.epubit.com/api/storage/getbykey/original?key=1902fe445ee0dc7eba7a)
+![](https://upload-images.jianshu.io/upload_images/468490-247333330752fa06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.1
+---
+
 
 #### 7．测试数据评估
 
 利用训练数据生成最佳算法后，在测试数据集上对算法的性能进行评估。测试数据集并不能参与算法训练，因此测试数据并不能影响算法的决策。
 
+---
+
+
 #### 8．参数调整
 
 在选择正确的算法后，可以尝试对其进行改进以获得更好的性能。每个算法都有不同的参数设置方式，可以对其进行配置从而更改算法性能，这称为**参数调整（Parameter Tuning）**。例如可以改变算法学习的速率（学习率）来提高算法性能，这些参数称为**超参数（Hyper Parameter）**。对于机器学习来说，参数调整更像是一门艺术。
 
+---
+
+
 #### 9．模型使用
 
 上述所有步骤完成之后，就可以获得在训练集上训练生成，并在测试集上完成评估的模型。现在可以使用这个模型来预测新数据的值。对于生产环境，可以将模型部署到服务器，并通过API接口使用模型的预测功能。当然，这个模型并不总一样的，每当获得新数据时，都要将上面所列出的步骤重新进行一遍，以改进模型的性能。
+
+---
+
 
 因此，在机器学习中，从问题开始，最后以一个解决问题的预测算法结束。
 
@@ -84,17 +124,23 @@
 
 假设你需要购买一栋房子，现在开始查看市场上正在出售的房屋，并据此核对你的预算。你对将要购买的房子有多个要求，首先就是房子的面积。
 
+---
+
+
 在图1.2的情景中，你先考查了一栋600平方英尺（约56m2）的房子，价格是220 000英镑（约1 942 578元）。这个房子的确很不错，但是它并不满足你的要求——你将和你的家人一同居住，而这个房子面积太小，并不能让每个人都住得舒适。所以，你继续研究并找到一栋1700平方英尺（约158m2）的房子，价格是730 000英镑（约6 445 827元）。这个房子满足你的要求，但是它的价格有些超出你现在的预算——你的预算与小面积房子的价格相比要高一些，但也不像大房子的价格那么高。然而，只有当你与业主或代理人见面并提交详细资料后，才能得到房子的实际价格。但是你并不想与每一个业主或者代理人见面。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0102.jpg{60%}](https://www.epubit.com/api/storage/getbykey/original?key=1902e955441678c82582)
+![](https://upload-images.jianshu.io/upload_images/468490-2e0efc2a0af00e71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.2
+---
+
+
 
 在二维（2D）平面上分析一下你所考查的两个属性，如图1.3所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0103.jpg{50%}](https://www.epubit.com/api/storage/getbykey/original?key=1902f0f0544522fdd97f)
+![](https://upload-images.jianshu.io/upload_images/468490-86e8c3239173c8ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.3
+---
+
 
 现在，你在城市里闲逛，找到一栋面积在这两栋房子之间的房子。
 
@@ -102,67 +148,64 @@
 
 将新房子的信息放在同一个二维平面上，试着预测这个房子的价格，如图1.4所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0104.jpg{50%}](https://www.epubit.com/api/storage/getbykey/original?key=19023ca0ca6648fdc86f)
+![](https://upload-images.jianshu.io/upload_images/468490-6bde80910053ba14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.4
+---
+
+
 
 为了预测房屋的价格，将设置一条符合已知结果（即房屋价格和房屋面积）的直线，这里得到了如图1.5所示的一条直线。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0105.jpg{50%}](https://www.epubit.com/api/storage/getbykey/original?key=190238e9a44b0d2a6091)
+![](https://upload-images.jianshu.io/upload_images/468490-f70084b66e54317c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.5
+---
+
 
 通过这条直线，可以预测出1250平方英尺（约116m2）的房子的价格是475 000英镑（约4 194 202.5元）。所以，我们得到了一条根据房子面积来预测房子价格的直线，这种技术称为**线性回归（Linear Regression）**。可以把这种技术理解为在现有数据点上寻找最佳直线。
 
 比如，计算3个点到直线距离之和的最小值。首先，随机选择一条线，直线上方有A、B、C共3个点，如图1.6所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0106.jpg{70%}](https://www.epubit.com/api/storage/getbykey/original?key=190210f49fc40390a770)
+![](https://upload-images.jianshu.io/upload_images/468490-28951a4897ebf38e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.6
+---
+
 
 然后，计算每个点到直线的距离，如图1.7所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0107.jpg{70%}](https://www.epubit.com/api/storage/getbykey/original?key=190211fe7f43dd359da3)
+![](https://upload-images.jianshu.io/upload_images/468490-8097ff9407edf38a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.7
 
 可以得到总距离是a+b+c。现在，移动直线的位置（向下移动）并再次计算点到直线的距离，如图1.8所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0108.jpg{70%}](https://www.epubit.com/api/storage/getbykey/original?key=190214fd4822865bde9b)
+![](https://upload-images.jianshu.io/upload_images/468490-50fecb6237dadb5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.8
 
 改变了线的位置，但总距离a+b+c增加了。显然，这不是我们想要的结果。让我们将直线朝另一个方向（向上移动）移动，如图1.9所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0109.jpg{70%}](https://www.epubit.com/api/storage/getbykey/original?key=1902abc54aaaf1e033cd)
+![](https://upload-images.jianshu.io/upload_images/468490-497cdf2f7c9f9102.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.9
 
 这条直线（见图1.9）比第一条直线（见图1.7）要更符合要求。现在移动这条线，并试着重复进行同样的步骤。最终通过这种方式结束直线的选择，从而确定直线位置，如图1.10所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0110.jpg{60%}](https://www.epubit.com/api/storage/getbykey/original?key=190246f193aa848c733f)
+![](https://upload-images.jianshu.io/upload_images/468490-a43b07ea2e4ee911.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.10
 
 对于给定的3个点（A、 B、 C）来说，图1.10所示的直线是最符合条件的。在这里取3个点到直线的非负距离，找到这条线的方法称为梯度下降法。
 
 有时在所有数据点上拟合一条直线并没有多大意义。现在思考图1.11所示的点集。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0111.jpg{70%}](https://www.epubit.com/api/storage/getbykey/original?key=19021e773f23933adf58)
+![](https://upload-images.jianshu.io/upload_images/468490-17eb0d2c46a0e499.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.11
 
 如果尝试使用线性回归技术来拟合一条直线，它看起来如图1.12所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0112.jpg{70%}](https://www.epubit.com/api/storage/getbykey/original?key=19022d405001bf4e7a22)
+![](https://upload-images.jianshu.io/upload_images/468490-7d978644848374d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.12
 
 很明显，这条线不适合用来预测。相反，可以用图1.13所示的曲线来对数据建模。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0113.jpg{75%}](https://www.epubit.com/api/storage/getbykey/original?key=1902a52bb7c666c66b3e)
+![](https://upload-images.jianshu.io/upload_images/468490-0c3ffb542a1ccf2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.13
 
 这就是所谓的**多项式回归（Polynomial Regression）** —— 因为其参数是多项式。
 
@@ -220,31 +263,27 @@ B3：千万不要买这个产品。
 
 现在，通过对这些数据进行观察，可以发现小于15岁的人喜欢阅读儿童杂志。根据其制作一个节点和它的决策，如图1.14所示。每个圆节点表示决策节点，图的边缘（箭头）则表示相应的决策，每个矩形节点表示通过图分支之后采取的决策。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0114.jpg{25%}](https://www.epubit.com/api/storage/getbykey/original?key=1902569b9b1b0cb3e5db)
+![](https://upload-images.jianshu.io/upload_images/468490-83fb8dd95d3aa5cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.14
 
 因此，可以说每个年龄小于或等于15岁的人都有可能阅读儿童杂志。现在再来处理大于15岁的读者的分支。
 
 现在，第二个观察特征是男性，他们喜欢阅读政治杂志。为其创建相同的决策节点和分支，如图1.15所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0115.jpg{30%}](https://www.epubit.com/api/storage/getbykey/original?key=1902b1dc0752e5363d99)
+![](https://upload-images.jianshu.io/upload_images/468490-e1a87ee03c0cf83d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.15
 
 接下来，需要看一下年龄在15岁以上的女性的选择。还有一个信息可以利用——地区。因此，可以说，来自美国的女性喜欢阅读体育杂志，而其他地区的女性则喜欢商业杂志。在这里形成的节点如图1.16所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0116.jpg{45%}](https://www.epubit.com/api/storage/getbykey/original?key=19027d58a412779d3767)
+![](https://upload-images.jianshu.io/upload_images/468490-b9117e3f30917329.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.16
 
 正确地对每个数据点进行分类，这个过程中形成了决策树。可能存在多种创建决策树的方法。根据现有的数据，这些方法可以做出正确的预测。
 
 图1.17所示的这棵树对数据进行了准确的分类。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0117.jpg{70%}](https://www.epubit.com/api/storage/getbykey/original?key=1902957af6b0958bb8b4)
+![](https://upload-images.jianshu.io/upload_images/468490-e47acd3c640a8768.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.17
 
 再来举另一个例子，有几个人每年申请贷款，银行根据他们的收入和贷款额从而决定是否对其提供贷款，目标是向那些在规定时间内偿还债务，且没有任何违约的人提供贷款。
 
@@ -252,15 +291,13 @@ B3：千万不要买这个产品。
 
 因此，银行基于以往违约者的历史创建了一个数据，如图1.18所示。红点表示银行拒绝受理的申请，绿点表示银行批准的申请。横坐标是请求的贷款额度，纵坐标是月收入。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0118.jpg{80%}](https://www.epubit.com/api/storage/getbykey/original?key=19026fd7fa35000f18d2)
+![](https://upload-images.jianshu.io/upload_images/468490-5cb29093f1cd9c0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.18
 
 现在，一个月收入10 000美元的人想要贷款300 000美元，银行是否会给予批准呢？可以通过一条直线来分割数据，如图1.19所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0119.jpg{80%}](https://www.epubit.com/api/storage/getbykey/original?key=1902bbb6dfa4187e84e7)
+![](https://upload-images.jianshu.io/upload_images/468490-5fde1242c7cf53df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.19
 
 根据上面的直线，可以预测银行将同意月薪20 000美元的人申请300 000美元的贷款申请。
 
@@ -268,49 +305,40 @@ B3：千万不要买这个产品。
 
 现在，银行来了一位新的经理，他要检查所有记录，他认为银行批准或拒绝贷款申请的参数是荒谬的，一些像10 000美元或20 000美元的贷款申请并没有风险，银行可以同意这部分贷款申请。所以，他改变了规则和数据，如图1.20所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0120.jpg{80%}](https://www.epubit.com/api/storage/getbykey/original?key=190271d5467f9424b9b6)
+![](https://upload-images.jianshu.io/upload_images/468490-5c7846c7e103eaf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.20
 
 显然，仅仅使用一条直线并不能将红点和绿点分开，既然这样，那使用两条直线呢？如图1.21所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0121.jpg{80%}](https://www.epubit.com/api/storage/getbykey/original?key=1902c9749e0af307975d)
+![](https://upload-images.jianshu.io/upload_images/468490-e6de6444b4b20cda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.21
 
 与一条直线相比，使用两条直线可以将红点和绿点分开。这种技术被称为**神经网络（Neural Network）**。神经网络是基于大脑中的神经元的概念提出的。大脑中的神经元收集信息并将其传递给其他神经元。简单来说，就是基于先前神经元的输入，下一个神经元接收要求并决定输出，它还将信息传递给其他神经元。最后，通过处理不同的神经元，大脑做出决定。
 
 这个概念可以用下面的模型（见图1.22）来理解。在这个模型中，两个神经元通过使用不同的假设建立模型，并且将它们的发现发送给另一个神经元。根据收集到的信息，输出神经元做出决策。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0122.jpg{80%}](https://www.epubit.com/api/storage/getbykey/original?key=19026d233a11385ce2dc)
-
-图1.22
+![](https://upload-images.jianshu.io/upload_images/468490-7f58b98c3e5e182e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 在处理数据时，对于一条分割数据点的直线，可能有不同的选择。如图1.23所示的两个例子。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0123.jpg{75%}](https://www.epubit.com/api/storage/getbykey/original?key=1902bf48aea14f5a0f5a)
-
-图1.23
+![](https://upload-images.jianshu.io/upload_images/468490-283e83d4b158405a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 与直线1相比，直线2的边距更大，其在分割数据方面似乎更好，如图1.24所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0124.jpg{35%}](https://www.epubit.com/api/storage/getbykey/original?key=19029451a97be3e676d5)
+![](https://upload-images.jianshu.io/upload_images/468490-284fc4652388a96b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.24
 
 现在我们要寻找最佳分割路线，而梯度下降并不能解决这个问题，需要线性优化才能实现。这种技术被称为最大间隔分类器或**支持向量机（Support Vector Machine， SVM）**。
 
 在现实世界中，数据并不能完全分割开。它可能会如图1.25所示的那样。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0125.jpg{40%}](https://www.epubit.com/api/storage/getbykey/original?key=19023a98957027f610a5)
+![](https://upload-images.jianshu.io/upload_images/468490-4ee408b8196d4417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.25
 
 所以，不能通过一条直线就把红点和绿点分开。但是如果通过一个平面来区分红点和绿点，就可以用一个分类器对它们进行分类。创建一个新的维度并用这个平面来分割红点和绿点，如图1.26所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\0126.jpg{40%}](https://www.epubit.com/api/storage/getbykey/original?key=19026758fc543844e5a3)
+![](https://upload-images.jianshu.io/upload_images/468490-0ed45415d40e23b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.26
 
 现在使用一个新的维度将红点和绿点分开。这种技术被称为**核函数（Kernel Trick）**。
 
@@ -318,23 +346,20 @@ B3：千万不要买这个产品。
 
 现在来看另一个问题。如图1.27所示，有一家杂货店A2A。他们提供电话送货服务，每当接到电话时，他们就会将地址发送给派送员，派送员会赶赴送货地点并交付商品。他们设法将办公室设在城市的中心，以便为越来越多的人及时提供服务。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\图像113326.png{80%}](https://www.epubit.com/api/storage/getbykey/original?key=190250d7f11b7e9e4aeb)
+![](https://upload-images.jianshu.io/upload_images/468490-2fd5ea66ebd6fef4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.27
 
 这里的点代表A2A的服务需求。现在他们意识到，这种一个配送中心处理所有的需求的做法并不明智。于是，他们决定在城市中开设4个配送中心，依照不同地区来接受需求并提供服务。
 
 因此，为了解决这个问题，首先可以随机地添加4个配送中心并给予其商品派送需求，如图1.28所示。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\图像113335.png{80%}](https://www.epubit.com/api/storage/getbykey/original?key=1902cc274b0b617cb564)
+![](https://upload-images.jianshu.io/upload_images/468490-c8748efc8f2bc6f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.28
 
 显然，这不是配送中心的最佳分配位置。接下来，将每个点移动到分类点的中心。然后，将所有点分类到最近的配送中心，并将配送中心的位置移动到之前的分类中心。经过多次迭代，将得到图1.29所示的分配位置。
 
-![E:\0在线编撰系统图书\50135\50135\1-3\OEBPS\image\图像113347.png{80%}](https://www.epubit.com/api/storage/getbykey/original?key=1902d31d9ae3b0ba8a10)
+![](https://upload-images.jianshu.io/upload_images/468490-662b09765fc4f0fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-图1.29
 
 因此，每个点的分配都是基于点到中心的距离。这种技术称为**K-均值聚类（K-Means Clustering）**。
 
